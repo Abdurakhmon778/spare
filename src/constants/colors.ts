@@ -1,5 +1,6 @@
 export default {
     blue: "#407AFF",
+    lightBlue2: "rgba(64, 122, 255, 0.07)",
     white: "#ffffff",
     black: "#000000",
     gray: "#87898E",

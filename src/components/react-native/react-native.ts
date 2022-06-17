@@ -9,7 +9,8 @@ import {
     Image,
     Dimensions,
     StyleSheet,
-    Animated
+    Animated,
+    TextInput
 } from 'react-native'
 
 export default {
@@ -23,5 +24,6 @@ export default {
     Image,
     Dimensions,
     StyleSheet,
-    Animated
+    Animated,
+    TextInput
 }

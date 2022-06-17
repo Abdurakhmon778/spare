@@ -57,5 +57,6 @@ export const styles = RN.StyleSheet.create({
     buttonBox: {
         position: "absolute",
         top: SIZES.height * 0.85,
+        width: SIZES.width - SIZES.margin
     }
 })

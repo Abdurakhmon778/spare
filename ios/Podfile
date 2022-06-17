@@ -21,6 +21,10 @@ target 'spare' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+
   target 'spareTests' do
     inherit! :complete
     # Pods for testing
