@@ -1,6 +1,7 @@
 import React from 'react'
+import * as Animatable from 'react-native-animatable';
 
-import { CheckBox, Icon } from '@rneui/themed';
+import { CheckBox } from '@rneui/themed';
 
 // components
 import { RN } from '../../../components'
@@ -20,11 +21,15 @@ const Login = () => {
     function renderHeader() {
         return (
             <RN.View style={styles.header}>
-                <RN.View style={styles.back}>
+                <Animatable.View
+                    style={styles.back}
+                    animation={"fadeInLeft"}
+                >
                     <BackBtn />
-                </RN.View>
+                </Animatable.View>
                 <RN.View style={styles.userImageBox}>
-                    <RN.Image
+                    <Animatable.Image
+                        animation={"bounceInRight"}
                         source={IMAGES.Image.User}
                         resizeMode="cover"
                         style={styles.userImage}
@@ -37,9 +42,9 @@ const Login = () => {
     function renderUserInfo() {
         return (
             <RN.View style={styles.userInfo}>
-                <RN.Text style={styles.title}>Welcome back,</RN.Text>
-                <RN.Text style={[styles.title, { fontFamily: "Inter-Black" }]}>Ugo</RN.Text>
-                <RN.Text style={styles.question}>Hope you are doing great?</RN.Text>
+                <Animatable.Text delay={300} animation={"fadeInDown"} style={styles.title}>Welcome back,</Animatable.Text>
+                <Animatable.Text delay={300} animation={"fadeInDown"} style={[styles.title, { fontFamily: "Inter-Black" }]}>Ugo</Animatable.Text>
+                <Animatable.Text delay={600} animation={"fadeInDown"} style={styles.question}>Hope you are doing great?</Animatable.Text>
             </RN.View>
         )
     }
@@ -47,48 +52,32 @@ const Login = () => {
     function renderInputs() {
         return (
             <RN.View style={styles.inputs}>
-                <Input
-                    placeholder='First Name'
-                    keyboardType={'default'}
-                    LeftIcon={() => (
-                        <RN.Image
-                            source={ICONS.User}
-                            style={{
-                                height: 17,
-                                width: 16,
-                                resizeMode: "cover"
-                            }}
-                        />
-                    )}
-                />
 
-                <Input
-                    placeholder='Enter your password'
-                    secureTextEntry={true}
-                    LeftIcon={() => (
-                        <RN.Image
-                            source={ICONS.Password}
-                            style={{
-                                height: 17,
-                                width: 14,
-                                resizeMode: "cover"
-                            }}
-                        />
-                    )}
-                    RightIcon={() => (
-                        <RN.Image
-                            source={ICONS.EyeSlash}
-                            style={{
-                                height: 17,
-                                width: 17,
-                                resizeMode: "cover"
-                            }}
-                        />
-                    )}
+                <Animatable.View animation={"bounceInDown"} delay={400}>
+                    <Input
+                        placeholder='First Name'
+                        keyboardType={'default'}
+                        LeftIcon={() => (
+                            <ICONS.UserSvg height={17} width={16} />
+                        )}
+                    />
+                </Animatable.View>
 
-                />
+                <Animatable.View animation={"bounceInDown"} delay={600}>
+                    <Input
+                        placeholder='Enter your password'
+                        secureTextEntry={true}
+                        LeftIcon={() => (
+                            <ICONS.PasswordSvg height={17} width={14} />
+                        )}
+                        RightIcon={() => (
+                            <ICONS.EyeSlashSvg height={17} width={17} />
+                        )}
 
-                <RN.View style={styles.rememberTextBox}>
+                    />
+                </Animatable.View>
+
+                <Animatable.View animation={"fadeInLeft"} style={styles.rememberTextBox}>
                     <CheckBox
                         title="Remember me"
                         checked={cheched}
@@ -100,7 +89,7 @@ const Login = () => {
                     <RN.TouchableOpacity>
                         <RN.Text style={{ ...styles.text, color: COLORS.blue }}>Forget your password?</RN.Text>
                     </RN.TouchableOpacity>
-                </RN.View>
+                </Animatable.View>
             </RN.View>
         )
     }
@@ -108,28 +97,32 @@ const Login = () => {
     function renderButtons() {
         return (
             <RN.View style={styles.buttons}>
-                <Button
-                    backgroundColor={COLORS.blue}
-                    textColor={COLORS.white}
-                    title={"Sign In"}
-                    onPress={() => console.log("sign in")}
-                />
+                <Animatable.View animation={"fadeInUpBig"} delay={340}>
+                    <Button
+                        backgroundColor={COLORS.blue}
+                        textColor={COLORS.white}
+                        title={"Sign In"}
+                        onPress={() => console.log("sign in")}
+                    />
+                </Animatable.View>
 
-                <Button
-                    backgroundColor={COLORS.white}
-                    textColor={COLORS.blue}
-                    title={"Sign Up"}
-                    onPress={() => console.log("sign in")}
-                />
+                <Animatable.View animation={"fadeInUp"} delay={670}>
+                    <Button
+                        backgroundColor={COLORS.white}
+                        textColor={COLORS.blue}
+                        title={"Sign Up"}
+                        onPress={() => console.log("sign in")}
+                    />
+                </Animatable.View>
             </RN.View>
         )
     }
 
     function renderFooterImage() {
         return (
-            <RN.View style={styles.footerImageBox}>
+            <Animatable.View animation={"bounceInUp"} delay={1000} style={styles.footerImageBox}>
                 <RN.Image source={ICONS.Login} style={styles.footerImage} />
-            </RN.View>
+            </Animatable.View>
         )
     }
     return (

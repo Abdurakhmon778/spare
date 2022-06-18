@@ -12,7 +12,7 @@ import { inputType } from '../../../types'
 // styles
 import { styles } from './styles'
 
-const Input = ({ LeftIcon, RightIcon, value, onChangeText, placeholder, keyboardType, secureTextEntry }: inputType) => {
+const Input = ({ LeftIcon, RightIcon, value, onChangeText, placeholder, keyboardType, secureTextEntry, style }: inputType) => {
 
     // Render
 
@@ -41,13 +41,15 @@ const Input = ({ LeftIcon, RightIcon, value, onChangeText, placeholder, keyboard
                 value={value ?? ""}
                 onChangeText={onChangeText}
                 keyboardType={keyboardType ?? "default"}
-                secureTextEntry
+                secureTextEntry={secureTextEntry}
+                autoCapitalize="none"
+                autoCorrect={false}
             />
         )
     }
 
     return (
-        <RN.View style={styles.container}>
+        <RN.View style={[styles.container, style]}>
             {/* Render Left icon */}
             {renderLeftIcon()}
 

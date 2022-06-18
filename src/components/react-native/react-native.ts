@@ -10,7 +10,9 @@ import {
     Dimensions,
     StyleSheet,
     Animated,
-    TextInput
+    TextInput,
+    Keyboard,
+    StatusBar
 } from 'react-native'
 
 export default {
@@ -25,5 +27,7 @@ export default {
     Dimensions,
     StyleSheet,
     Animated,
-    TextInput
+    TextInput,
+    Keyboard,
+    StatusBar
 }

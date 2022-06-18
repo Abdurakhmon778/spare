@@ -1,4 +1,5 @@
 import React from "react"
+import * as Animatable from 'react-native-animatable'
 
 // components
 import { RN } from "../../../components"
@@ -19,7 +20,9 @@ const Item = ({ title, Image, ImageHeight, ImageWidth, description, index, dataL
     function renderImage() {
         return (
             <RN.View style={styles.imageBox}>
-                <RN.Image
+                <Animatable.Image
+                    animation={"slideInDown"}
+                    delay={300}
                     source={Image}
                     style={{
                         width: ImageWidth,
@@ -34,8 +37,8 @@ const Item = ({ title, Image, ImageHeight, ImageWidth, description, index, dataL
     function renderInfo() {
         return (
             <RN.View style={styles.infoBox}>
-                <RN.Text style={styles.title}>{title}</RN.Text>
-                <RN.Text style={styles.description}>{description}</RN.Text>
+                <Animatable.Text animation={'wobble'} delay={500} style={styles.title}>{title}</Animatable.Text>
+                <Animatable.Text animation={'tada'} delay={900} style={styles.description}>{description}</Animatable.Text>
             </RN.View>
         )
     }
