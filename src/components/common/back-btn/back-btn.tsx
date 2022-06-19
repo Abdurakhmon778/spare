@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 // components
 import { RN } from '../..'
@@ -13,12 +14,13 @@ import { backBtnType } from '../../../types'
 import { styles } from './styles'
 
 const BackBtn = ({ onPress }: backBtnType) => {
+    const navigation = useNavigation()
 
     return (
         <RN.TouchableOpacity
             style={styles.backBtn}
             hitSlop={{ top: 20, left: 20, bottom: 20, right: 20 }}
-            onPress={onPress}
+            onPress={() => navigation.goBack()}
 
         >
             <RN.Image

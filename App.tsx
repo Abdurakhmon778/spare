@@ -1,20 +1,19 @@
-import React from "react"
-import { RN } from "./src/components"
+import * as React from 'react'
 
-import { GetStarted, Login, Signup } from "./src/screens/public"
+// components
+import { RN } from './src/components'
 
-
+// root navigation
+import RootNavigationStack from './src/root-navigation/root-navigation'
 
 const App = () => {
 
   return (
     <>
       <RN.StatusBar hidden />
-      <Signup />
+      <RootNavigationStack />
     </>
   )
 }
-
-
 
 export default App

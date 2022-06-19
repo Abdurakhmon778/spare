@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import axios from 'axios'
-import { KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native'
+
+import { KeyboardAvoidingView } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 
 // components
@@ -12,8 +15,13 @@ import { COLORS, ICONS, IMAGES } from '../../../constants'
 
 // styles
 import { styles } from './styles'
+import { List, RootStackParamList } from '../../../types'
+
+
+type SignupNavigationType = NativeStackNavigationProp<RootStackParamList, List.signup>
 
 const Signup = () => {
+    const navigation = useNavigation<SignupNavigationType>()
 
     const [countrys, setCountrys] = React.useState([])
     const [country, setCountry] = React.useState("")
@@ -31,6 +39,11 @@ const Signup = () => {
 
     React.useEffect(() => {
         getAllCountrys()
+
+        return () => {
+            setCountrys([])
+            setCountry("")
+        }
     }, [])
 
     React.useEffect(() => {
@@ -46,6 +59,8 @@ const Signup = () => {
         return () => {
             keyboardDidShow.remove()
             keyboardDidHide.remove()
+            setCountrys([])
+            setCountry("")
         }
 
     }, [])
@@ -189,7 +204,7 @@ const Signup = () => {
 
                 <RN.View style={styles.footerTextBox}>
                     <RN.Text style={styles.footerText}>Already have an account?</RN.Text>
-                    <RN.TouchableOpacity>
+                    <RN.TouchableOpacity onPress={() => navigation.navigate(List.login)}>
                         <RN.Text style={[styles.footerText, styles.signin]}>Sign in</RN.Text>
                     </RN.TouchableOpacity>
                 </RN.View>
@@ -199,7 +214,7 @@ const Signup = () => {
 
     return (
         <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            // behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
             <RN.ScrollView>

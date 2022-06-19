@@ -12,8 +12,10 @@ import { COLORS, ICONS, IMAGES } from '../../../constants'
 
 // styles
 import { styles } from './styles'
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { List, RootStackParamList } from '../../../types';
 
-const Login = () => {
+const Login = ({ navigation }: NativeStackScreenProps<RootStackParamList, List.login>) => {
     const [cheched, setChecked] = React.useState(false)
 
     // Render
@@ -102,7 +104,10 @@ const Login = () => {
                         backgroundColor={COLORS.blue}
                         textColor={COLORS.white}
                         title={"Sign In"}
-                        onPress={() => console.log("sign in")}
+                        onPress={() => {
+                            console.log("sign in")
+                            navigation.navigate(List.verify)
+                        }}
                     />
                 </Animatable.View>
 
@@ -111,7 +116,10 @@ const Login = () => {
                         backgroundColor={COLORS.white}
                         textColor={COLORS.blue}
                         title={"Sign Up"}
-                        onPress={() => console.log("sign in")}
+                        onPress={() => {
+                            console.log("sign in")
+                            navigation.navigate(List.signup)
+                        }}
                     />
                 </Animatable.View>
             </RN.View>

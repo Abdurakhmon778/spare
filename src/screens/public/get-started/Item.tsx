@@ -1,4 +1,6 @@
 import React from "react"
+import { NativeStackNavigationProp } from "@react-navigation/native-stack"
+import { useNavigation } from "@react-navigation/native"
 import * as Animatable from 'react-native-animatable'
 
 // components
@@ -9,12 +11,16 @@ import { Button } from "../../../components/common"
 import { COLORS } from "../../../constants"
 
 // types
-import { slideItem } from "../../../types"
+import { List, slideItem, RootStackParamList } from "../../../types"
 
 // styles
 import { styles } from "./styles"
 
+type loginScreenProps = NativeStackNavigationProp<RootStackParamList, List.getStarted>
+
 const Item = ({ title, Image, ImageHeight, ImageWidth, description, index, dataLength }: slideItem) => {
+
+    const navigation = useNavigation<loginScreenProps>()
 
     // Render
     function renderImage() {
@@ -52,8 +58,10 @@ const Item = ({ title, Image, ImageHeight, ImageWidth, description, index, dataL
                         backgroundColor={COLORS.blue}
                         onPress={() => {
                             console.log("get started")
+                            navigation.navigate(List.login)
                         }}
                         title={"Get Started"}
+
                     />
                 </RN.View>
             ) : null

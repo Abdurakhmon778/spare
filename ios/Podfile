@@ -25,6 +25,10 @@ target 'spare' do
 
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
 
+  pod 'RNCClipboard', :path => '../node_modules/@react-native-community/clipboard'
+
+  pod 'RNScreens', :path => '../node_modules/react-native-screens'
+
   target 'spareTests' do
     inherit! :complete
     # Pods for testing
